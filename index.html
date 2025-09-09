@@ -3,158 +3,195 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Picole Party - Bientôt disponible</title>
+<title>Picole Party - Bientôt Disponible</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-  /* Reset et base */
-  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-  body, html { height: 100%; background: linear-gradient(135deg, #0b0b0d, #1f1f23); color: #e9e9e9; }
+/* Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body, html { height: 100%; font-family: 'Inter', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
 
-  /* Container principal */
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 50px 20px;
-    min-height: 100vh;
+/* Background avec dégradé et formes animées */
+body {
+    background: linear-gradient(120deg, #0f0f0f, #1a1a1a, #111, #1f1f1f);
+    color: #fff;
+    overflow-x: hidden;
     position: relative;
-    overflow: hidden;
-  }
+}
 
-  /* Effet d'arrière-plan animé */
-  .container::before {
-    content: '';
+.shape {
     position: absolute;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle at center, rgba(255, 215, 0,0.1), transparent 70%);
-    top: -50%;
-    left: -50%;
-    animation: rotateBG 20s linear infinite;
-    z-index: 0;
-  }
+    border-radius: 50%;
+    opacity: 0.1;
+    animation: float 25s infinite;
+}
+.shape1 { width: 500px; height: 500px; background: #ffd700; top: -100px; left: -100px; animation-delay: 0s; }
+.shape2 { width: 400px; height: 400px; background: #ff007f; top: 200px; right: -150px; animation-delay: 5s; }
+.shape3 { width: 300px; height: 300px; background: #00ffff; bottom: -150px; left: 50px; animation-delay: 10s; }
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-50px) rotate(180deg); }
+    100% { transform: translateY(0) rotate(360deg); }
+}
 
-  @keyframes rotateBG {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
+/* Container */
+.container { max-width: 1400px; width: 90%; margin: auto; padding: 120px 0; text-align: center; }
 
-  h1 {
-    font-size: 3rem;
+/* Hero */
+.hero {
+    margin-bottom: 120px;
+}
+.hero h1 {
+    font-size: 5rem;
     font-weight: 800;
-    background: linear-gradient(90deg, #ffd700, #ff5500, #ffd700);
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+    background: linear-gradient(90deg, #ffd700, #ff007f, #00ffff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: gradientText 3s ease infinite;
-    position: relative;
-    z-index: 1;
-  }
-
-  @keyframes gradientText {
-    0% { background-position: 0%; }
-    50% { background-position: 100%; }
-    100% { background-position: 0%; }
-  }
-
-  p.subtitle {
+}
+.hero p {
+    font-size: 1.5rem;
+    color: #ccc;
+    margin-bottom: 40px;
+}
+.btn {
+    padding: 20px 60px;
+    font-weight: 600;
     font-size: 1.2rem;
-    color: #9aa0a6;
-    margin: 15px 0 40px;
-    z-index: 1;
-    position: relative;
-  }
-
-  /* Boxes info */
-  .boxes {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    width: 100%;
-    max-width: 1000px;
-    z-index: 1;
-    position: relative;
-  }
-
-  .box {
-    background: rgba(255,255,255,0.05);
-    border: 2px solid rgba(255,215,0,0.5);
-    padding: 20px;
-    border-radius: 20px;
-    backdrop-filter: blur(8px);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-
-  .box:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 30px rgba(255,215,0,0.4);
-  }
-
-  .box h3 {
-    margin-bottom: 12px;
-    color: #ffd700;
-  }
-
-  .box p {
-    color: #e0e0e0;
-    line-height: 1.5;
-  }
-
-  /* Bouton */
-  .coming-soon-btn {
-    margin-top: 40px;
-    padding: 15px 30px;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #0b0b0d;
+    color: #1a1a1a;
     background: #ffd700;
     border: none;
-    border-radius: 15px;
+    border-radius: 25px;
     cursor: not-allowed;
-    opacity: 0.9;
+    opacity: 0.95;
     transition: transform 0.2s;
-  }
+}
+.btn:hover { transform: scale(1.05); }
 
-  .coming-soon-btn:hover {
-    transform: scale(1.05);
-  }
+/* Section Features */
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 150px;
+}
+.feature-box {
+    flex: 1 1 300px;
+    max-width: 350px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 25px;
+    padding: 40px 30px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.feature-box:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 60px rgba(255,255,255,0.1);
+}
+.feature-box h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #ffd700;
+    margin-bottom: 20px;
+}
+.feature-box p { color: #ccc; line-height: 1.7; font-size: 1rem; }
 
-  /* Mobile */
-  @media (max-width: 600px) {
-    h1 { font-size: 2.2rem; }
-    p.subtitle { font-size: 1rem; margin-bottom: 30px; }
-  }
+/* About Section */
+.about {
+    margin-bottom: 150px;
+}
+.about h2 {
+    font-size: 3rem;
+    margin-bottom: 50px;
+    font-weight: 800;
+    color: #ffd700;
+}
+.about p {
+    font-size: 1.2rem;
+    color: #ccc;
+    max-width: 900px;
+    margin: auto;
+    line-height: 1.8;
+}
 
+/* Footer */
+footer {
+    margin-top: 100px;
+    color: #555;
+    font-size: 0.9rem;
+    margin-bottom:50px;
+}
+
+/* Animations fadeIn */
+.fadeIn {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeIn 1s forwards;
+}
+.fadeIn.delay1 { animation-delay: 0.2s; }
+.fadeIn.delay2 { animation-delay: 0.4s; }
+.fadeIn.delay3 { animation-delay: 0.6s; }
+.fadeIn.delay4 { animation-delay: 0.8s; }
+@keyframes fadeIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 3.5rem; }
+    .hero p { font-size: 1.2rem; }
+    .features { gap: 20px; }
+    .feature-box { max-width: 100%; padding: 30px 20px; }
+}
 </style>
 </head>
 <body>
+<!-- Formes animées -->
+<div class="shape shape1"></div>
+<div class="shape shape2"></div>
+<div class="shape shape3"></div>
 
 <div class="container">
-  <h1>Picole Party 🐖</h1>
-  <p class="subtitle">L’appli qui calcule ton taux d’alcool et anime tes soirées !</p>
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Picole Party 🍻</h1>
+        <p>L'application qui rend vos soirées fun et responsables – Bientôt disponible !</p>
+        <button class="btn">📱 Bientôt disponible</button>
+    </section>
 
-  <div class="boxes">
-    <div class="box">
-      <h3>🎯 Suivi en temps réel</h3>
-      <p>Ajoute tes boissons et visualise ton taux d’alcool estimé pour rester safe et responsable.</p>
-    </div>
-    <div class="box">
-      <h3>📊 Statistiques fun</h3>
-      <p>Des graphiques simples pour suivre tes soirées, tes consommations et tes amis présents.</p>
-    </div>
-    <div class="box">
-      <h3>👥 Partage avec tes amis</h3>
-      <p>Ajoute tes amis, compare vos soirées et défiez-vous avec notre dé de gorgées fun !</p>
-    </div>
-    <div class="box">
-      <h3>🚀 Bientôt disponible</h3>
-      <p>L’application n’est pas encore disponible, mais elle arrive très vite sur iOS et Android !</p>
-    </div>
-  </div>
+    <!-- Features Section -->
+    <section class="features">
+        <div class="feature-box fadeIn delay1">
+            <h3>📊 Suivi en temps réel</h3>
+            <p>Visualisez votre taux d’alcool estimé et celui de vos amis pour rester safe tout en vous amusant.</p>
+        </div>
+        <div class="feature-box fadeIn delay2">
+            <h3>🎉 Fun et statistiques</h3>
+            <p>Des graphiques clairs pour suivre vos soirées, vos consommations et comparer vos performances entre amis.</p>
+        </div>
+        <div class="feature-box fadeIn delay3">
+            <h3>👥 Partage entre amis</h3>
+            <p>Ajoutez vos amis, suivez leurs scores et défiez-vous avec notre dé de gorgées interactif et fun.</p>
+        </div>
+        <div class="feature-box fadeIn delay4">
+            <h3>🚀 Bientôt disponible</h3>
+            <p>L’application arrive très vite sur iOS et Android. Préparez-vous à révolutionner vos soirées !</p>
+        </div>
+    </section>
 
-  <button class="coming-soon-btn">📱 Bientôt disponible</button>
+    <!-- About Section -->
+    <section class="about fadeIn">
+        <h2>Pourquoi Picole Party ?</h2>
+        <p>Notre application combine sécurité, fun et interaction sociale. Elle vous permet de suivre vos soirées de manière responsable tout en restant connecté avec vos amis. C’est le compagnon idéal pour chaque fête.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 Picole Party. Tous droits réservés.
+    </footer>
 </div>
-
 </body>
 </html>
